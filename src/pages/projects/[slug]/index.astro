@@ -1,9 +1,42 @@
 ---
+export const prerender = true;
 import Layout from "../../../layouts/Layout.astro"
+
+// fetching data
+export async function getStaticPaths() {
+  const response = await fetch(import.meta.env.HYGRAPH_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      query: `
+        {
+          projects {
+            title
+            slug       
+          }
+        }`,
+    }),
+  });
+
+  const json = await response.json();
+
+  const paths = json.data.projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+
+  return paths;
+}
+
+const {project} = Astro.props
 ---
 
 <Layout title="" description="" url="" ogImage="" ogAlt="">
     <main>
         <h1>Project details page</h1>
+        <h2>{project.title}</h2>
     </main>
 </Layout>

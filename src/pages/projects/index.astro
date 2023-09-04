@@ -1,9 +1,40 @@
 ---
+export const prerender = true
 import Layout from "../../layouts/Layout.astro"
+
+interface Project {
+  title: string;
+  slug: string;
+}
+// fetching data
+
+const query = {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    query: `
+      {
+        projects {
+          title
+          slug
+        }
+      }`,
+  }),
+};
+
+const response = await fetch(import.meta.env.HYGRAPH_ENDPOINT, query);
+const json = await response.json();
+const projects: Project[] = json.data.projects;
 ---
 
 <Layout title="" description="" url="" ogImage="" ogAlt="">
     <main>
-        <h1>Projects</h1>
+        {
+            projects.map((project) => (
+              <div>
+                <a href={`/projects/${project.slug}`}>{project.title}</a>
+              </div>
+            ))
+          }
     </main>
 </Layout>
