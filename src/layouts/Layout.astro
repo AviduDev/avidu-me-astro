@@ -1,0 +1,89 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  url: string;
+  ogImage: string;
+  ogAlt: string;
+}
+
+const { title, description, url, ogImage, ogAlt } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" itemscope itemtype="https://schema.org/Article">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <!-- Control the behavior of search engine crawling and indexing -->
+    <meta name="robots" content="index,follow" /><!-- All Search Engines -->
+    <meta name="googlebot" content="index,follow" /><!-- Google Specific -->
+    <!-- open graph -->
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={ogAlt} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="Avidu.me" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:author" content="Avidu Bandara" />
+    <!-- schema org -->
+    <link rel="author" href="Avidu Bandara" />
+    <link rel="publisher" href="Avidu" />
+    <meta itemprop="name" content={title} />
+    <meta itemprop="description" content={description} />
+    <meta itemprop="image" content={ogImage} />
+  </head>
+  <!-- end of head -->
+  <!-- body -->
+  <body>
+    <slot />
+  </body>
+  <!-- end of body -->
+</html>
+
+<!-- golbal styles -->
+<style is:global>
+  :root {
+    /* --accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%); */
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family:
+      Arial,
+      Helvetica,
+      system-ui,
+      -apple-system;
+  }
+
+  body {
+    padding: 1rem;
+  }
+
+  code {
+    font-family:
+      Menlo,
+      Monaco,
+      Lucida Console,
+      Liberation Mono,
+      DejaVu Sans Mono,
+      Bitstream Vera Sans Mono,
+      Courier New,
+      monospace;
+  }
+</style>
