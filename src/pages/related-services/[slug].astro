@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 
   const json = await response.json();
 
-  const paths = json.data.relatedServices.map((relatedService: any) => ({
+  const paths = json.data.relatedServices.map((relatedService) => ({
     params: { slug: relatedService.slug },
     props: { relatedService },
   }));
