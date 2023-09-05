@@ -42,11 +42,11 @@ const { service } = Astro.props;
   <main>
     <h1>{service.name}</h1>
 
-    <h2>Related Services</h2>
+    <h2>Related Services goes here</h2>
     <ul>
       {
         service.relatedServices.map((relatedService: any) => (
-          <li >
+          <li>
             <a href={`/related-services/${relatedService.slug}`}>
               {relatedService.name}
             </a>
