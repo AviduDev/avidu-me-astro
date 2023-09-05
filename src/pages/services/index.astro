@@ -3,7 +3,7 @@ export const prerender = true;
 import Layout from "../../layouts/Layout.astro";
 
 interface Project {
-  title: string;
+  name: string;
   slug: string;
 }
 // fetching data
@@ -14,8 +14,8 @@ const query = {
   body: JSON.stringify({
     query: `
       {
-        projects {
-          title
+        services{
+          name
           slug
         }
       }`,
@@ -24,7 +24,7 @@ const query = {
 
 const response = await fetch(import.meta.env.HYGRAPH_ENDPOINT, query);
 const json = await response.json();
-const projects: Project[] = json.data.projects;
+const services: Service[] = json.data.services;
 ---
 
 <Layout title="" description="" url="" ogImage="" ogAlt="">
@@ -33,9 +33,9 @@ const projects: Project[] = json.data.projects;
 
     <div>
       {
-        projects.map((project) => (
+        services.map((service) => (
           <div>
-            <a href={`/services/${project.slug}`}>{project.title}</a>
+            <a href={`/services/${service.slug}`}>{service.name}</a>
           </div>
         ))
       }

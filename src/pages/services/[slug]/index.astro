@@ -1,5 +1,4 @@
 ---
-import type { GetStaticPaths } from "astro";
 export const prerender = true;
 import Layout from "../../../layouts/Layout.astro";
 
@@ -14,9 +13,13 @@ export async function getStaticPaths() {
     body: JSON.stringify({
       query: `
         {
-          projects {
-            title
-            slug       
+          services{
+            name
+            slug
+            relatedServices {
+              name
+              slug
+            }
           }
         }`,
     }),
@@ -24,20 +27,30 @@ export async function getStaticPaths() {
 
   const json = await response.json();
 
-  const paths = json.data.projects.map((project) => ({
-    params: { slug: project.slug },
-    props: { project },
+  const paths = json.data.services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
   }));
 
   return paths;
 }
 
-const {project} = Astro.props
+const { service } = Astro.props;
 ---
 
 <Layout title="" description="" url="" ogImage="" ogAlt="">
   <main>
-    <h1>{project.title}</h1>
-    <h2></h2>
+    <h1>{service.name}</h1>
+
+    <h2>Related Services</h2>
+    <ul>
+      {
+        service.relatedServices.map((relatedService) => (
+          <li>
+            <a href={`/related-services/${relatedService.slug}`}>{relatedService.name}</a>
+          </li>
+        ))
+      }
+    </ul>
   </main>
 </Layout>

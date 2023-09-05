@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro"
 
 interface Project {
-  title: string;
+  name: string;
   slug: string;
 }
 // fetching data
@@ -14,7 +14,7 @@ const query = {
     query: `
       {
         projects {
-          title
+          name
           slug
         }
       }`,
@@ -31,7 +31,7 @@ const projects: Project[] = json.data.projects;
         {
             projects.map((project) => (
               <div>
-                <a href={`/projects/${project.slug}`}>{project.title}</a>
+                <a href={`/projects/${project.slug}`}>{project.name}</a>
               </div>
             ))
           }
