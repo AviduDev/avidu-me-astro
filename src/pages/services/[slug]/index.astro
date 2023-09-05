@@ -27,7 +27,7 @@ export async function getStaticPaths() {
 
   const json = await response.json();
 
-  const paths = json.data.services.map((service) => ({
+  const paths = json.data.services.map((service: any) => ({
     params: { slug: service.slug },
     props: { service },
   }));
@@ -45,9 +45,11 @@ const { service } = Astro.props;
     <h2>Related Services</h2>
     <ul>
       {
-        service.relatedServices.map((relatedService) => (
-          <li>
-            <a href={`/related-services/${relatedService.slug}`}>{relatedService.name}</a>
+        service.relatedServices.map((relatedService: any) => (
+          <li >
+            <a href={`/related-services/${relatedService.slug}`}>
+              {relatedService.name}
+            </a>
           </li>
         ))
       }

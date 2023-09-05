@@ -1,5 +1,4 @@
 ---
-export const prerender = true;
 import Layout from "../../layouts/Layout.astro";
 
 // fetching data
@@ -14,8 +13,8 @@ export async function getStaticPaths() {
       query: `
         {
             relatedServices {
-            name
-            slug
+                name
+                slug
             }
         }`,
     }),
@@ -23,7 +22,7 @@ export async function getStaticPaths() {
 
   const json = await response.json();
 
-  const paths = json.data.relatedServices.map((relatedService) => ({
+  const paths = json.data.relatedServices.map((relatedService: any) => ({
     params: { slug: relatedService.slug },
     props: { relatedService },
   }));
