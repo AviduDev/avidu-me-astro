@@ -2,6 +2,9 @@
 export const prerender = true;
 import Layout from "../../layouts/Layout.astro"
 
+const currentPath = Astro.url.pathname;
+
+
 // fetching data
 
 const query = {
@@ -23,7 +26,7 @@ const json = await response.json();
 const projects = json.data.projects;
 ---
 
-<Layout title="" description="" url="fsf" ogImage="" ogAlt="">
+<Layout title="" description="" url={currentPath} ogImage="" ogAlt="">
     <main>
         {
             projects.map((project) => (
