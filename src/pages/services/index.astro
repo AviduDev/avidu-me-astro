@@ -14,7 +14,7 @@ const query = {
   body: JSON.stringify({
     query: `
       {
-        services{
+        relatedServices{
           name
           slug
         }
@@ -24,7 +24,7 @@ const query = {
 
 const response = await fetch(import.meta.env.HYGRAPH_ENDPOINT, query);
 const json = await response.json();
-const services: Project[] = json.data.services;
+const relatedServices: Project[] = json.data.relatedServices;
 ---
 
 <Layout title="" description="" url="" ogImage="" ogAlt="">
@@ -33,7 +33,7 @@ const services: Project[] = json.data.services;
 
     <div>
       {
-        services.map((service) => (
+        relatedServices.map((service) => (
           <div>
             <a href={`/services/${service.slug}`}>{service.name}</a>
           </div>
