@@ -24,31 +24,31 @@ a {
 }
 /* text sizing */
 h1 {
-    font-size: 8rem;
-}
-
-h2 {
-    font-size: 6rem;
-}
-
-h3 {
     font-size: 4rem;
 }
 
-h4 {
+h2 {
+    font-size: 3rem;
+}
+
+h3 {
     font-size: 2rem;
 }
 
-h5 {
+h4 {
     font-size: 1rem;
+}
+
+h5 {
+    font-size: 0.75rem;
 }
 
 p {
-    font-size: 1rem;
+    font-size: 0.75rem;
 }
 
 a {
-    font-size: 1rem;
+    font-size: 0.75rem;
 }
 /* default styles for elements */
 ::selection {
