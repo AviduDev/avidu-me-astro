@@ -1,4 +1,4 @@
-/* css reset */
+/* --------------css reset-------------- */
 *,
 *::after,
 *::before {
@@ -6,7 +6,8 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* fonts */
+
+/* --------------fonts-------------- */
 html {
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -22,13 +23,15 @@ h5 {
 a {
     color: inherit;
 }
-/* text sizing */
+
+/* --------------text sizing-------------- */
+/* mobile text sizes */
 h1 {
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
 }
 
 h3 {
@@ -36,28 +39,42 @@ h3 {
 }
 
 h4 {
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 h5 {
-    font-size: 0.75rem;
+    font-size: 1rem;
 }
 
 p {
-    font-size: 0.75rem;
+    font-size: 1rem;
 }
 
 a {
-    font-size: 0.75rem;
+    font-size: 1rem;
 }
-/* default styles for elements */
+
+div,
+span,
+ul,
+li {
+    font-size: 1rem;
+}
+
+/* tablet text sizes */
+
+/* desktop text sizes */
+
+/* --------------default styles for elements-------------- */
 ::selection {
     background-color: #fdcd5a;
 }
-/* spacing for the elements */
+
+/* --------------spacing for the elements-------------- */
 body {
     padding: 1rem;
     background-color: #f4f3ef;
     overflow-x: hidden;
 }
-/* responsive design media queries */
+
+/* --------------responsive design media queries-------------- */
