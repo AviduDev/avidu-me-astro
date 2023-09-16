@@ -1,0 +1,63 @@
+/* css reset */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* fonts */
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    text-transform: uppercase;
+}
+
+a {
+    color: inherit;
+}
+/* text sizing */
+h1 {
+    font-size: 8rem;
+}
+
+h2 {
+    font-size: 6rem;
+}
+
+h3 {
+    font-size: 4rem;
+}
+
+h4 {
+    font-size: 2rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+a {
+    font-size: 1rem;
+}
+/* default styles for elements */
+::selection {
+    background-color: #fdcd5a;
+}
+/* spacing for the elements */
+body {
+    padding: 1rem;
+    background-color: #f4f3ef;
+    overflow-x: hidden;
+}
+/* responsive design media queries */

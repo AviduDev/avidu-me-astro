@@ -1,9 +1,8 @@
 ---
 export const prerender = true;
-import Layout from "../../layouts/Layout.astro"
+import Layout from "../../layouts/Layout.astro";
 
 const currentPath = Astro.url.pathname;
-
 
 // fetching data
 
@@ -17,6 +16,10 @@ const query = {
           name
           slug
         }
+        relatedServices{
+          name
+          slug
+        }
       }`,
   }),
 };
@@ -24,16 +27,17 @@ const query = {
 const response = await fetch(import.meta.env.HYGRAPH_ENDPOINT, query);
 const json = await response.json();
 const projects = json.data.projects;
+const relatedServices = json.data.relatedServices;
 ---
 
 <Layout title="" description="" url={currentPath} ogImage="" ogAlt="">
-    <main>
-        {
-            projects.map((project) => (
-              <div>
-                <a href={`/projects/${project.slug}`}>{project.name}</a>
-              </div>
-            ))
-          }
-    </main>
+  <main>
+    {
+      projects.map((project) => (
+        <div>
+          <a href={`/projects/${project.slug}`}>{project.name}</a>
+        </div>
+      ))
+    }
+  </main>
 </Layout>
