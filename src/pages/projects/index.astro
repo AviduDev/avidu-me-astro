@@ -1,5 +1,6 @@
 ---
 export const prerender = true;
+import Img from "../../components/Img.astro";
 import Layout from "../../layouts/Layout.astro";
 
 const currentPath = Astro.url.pathname;
@@ -15,6 +16,11 @@ const query = {
         projects {
           name
           slug
+          mainImage {
+            url
+            width
+            height
+          }
         }
         relatedServices{
           name
@@ -36,6 +42,12 @@ const relatedServices = json.data.relatedServices;
       projects.map((project) => (
         <div>
           <a href={`/projects/${project.slug}`}>{project.name}</a>
+          <Img
+            src={project.mainImage.url}
+            alt={project.name}
+            width={project.mainImage.width}
+            height={project.mainImage.height}
+          />
         </div>
       ))
     }

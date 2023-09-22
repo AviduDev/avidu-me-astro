@@ -67,9 +67,13 @@ li {
 
 /* --------------default styles for elements-------------- */
 ::selection {
-    background-color: #fdcd5a;
+    background-color: #ffb300;
 }
 
+Image,
+img {
+    max-width: 100%;
+}
 /* --------------spacing for the elements-------------- */
 body {
     padding: 1rem;
