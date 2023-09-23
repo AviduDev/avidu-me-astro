@@ -17,12 +17,13 @@ const { big, small } = Astro.props;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: baseline;
+        align-items: flex-end;
         border-bottom: 1px solid black;
     }
 
     .small {
         font-size: var(--p-lg);
         font-weight: normal;
+        text-transform: capitalize;
     }
 </style>
